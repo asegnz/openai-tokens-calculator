@@ -45,7 +45,10 @@ public class Calculadora {
     private int numeroTokens(String consulta) {
         EncodingRegistry registry = Encodings.newDefaultEncodingRegistry();
         Encoding enc = registry.getEncoding(EncodingType.O200K_BASE); //o200k_base
+        long inicio = System.nanoTime();
         IntArrayList encoded = enc.encode(consulta);
+        long fin = System.nanoTime();
+        System.out.println("Esta conversión ha tardado "+ (fin - inicio) +" nanosegundos");
         System.out.println("La consulta '" + consulta + "' se ha codificado en " + encoded + " y son " + encoded.size() + " tokens.");
         return encoded.size();
     }
